@@ -21,7 +21,7 @@ $ErrorActionPreference = "Stop"
 
 $templateRootUriString = $env:TEMPLATE_ROOT_URI
 if ($templateRootUriString -eq $null) {
-  $templateRootUriString = "https://raw.githubusercontent.com/mspnp/template-building-blocks/v1.0.0/"
+  $templateRootUriString = "https://raw.githubusercontent.com/mspnp/mspnp/-blocks/v1.0.0/"
 }
 if (![System.Uri]::IsWellFormedUriString($templateRootUriString, [System.UriKind]::Absolute)) {
   throw "Invalid value for TEMPLATE_ROOT_URI: $env:TEMPLATE_ROOT_URI"
