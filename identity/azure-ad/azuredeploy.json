@@ -40,6 +40,29 @@
       "parameter": {
         "virtualNetwork": "[concat(parameters('parameterRootUri'), 'onpremise', '/virtualNetwork.parameters.json')]",
         "virtualMachine": "[concat(parameters('parameterRootUri'), 'onpremise', '/virtualMachines-adc.parameters.json')]",
+        "virtualMachinePing": "[concat(parameters('parameterRootUri'), 'onpremise', '/virtualMachines-ping.parameters.json')]",
+
+
+        "networkSecurityGroup": "[concat(parameters('parameterRootUri'), parameters('osType'), '/networkSecurityGroups.parameters.json')]",
+        "webTier": "[concat(parameters('parameterRootUri'), parameters('osType'), '/webTier.parameters.json')]",
+        "dataTier": "[concat(parameters('parameterRootUri'), parameters('osType'), '/dataTier.parameters.json')]",
+        "businessTier": "[concat(parameters('parameterRootUri'), parameters('osType'), '/businessTier.parameters.json')]",
+        "managementTier": "[concat(parameters('parameterRootUri'), parameters('osType'), '/managementTier.parameters.json')]"
+      }
+    },
+    "onpremise-rf": {
+      "deployment": {
+        "virtualNetwork": "[concat(parameters('templateRootUri'), 'templates/buildingBlocks/vnet-n-subnet/azuredeploy.json')]",
+        "virtualMachine": "[concat(parameters('templateRootUri'), 'templates/buildingBlocks/multi-vm-n-nic-m-storage/azuredeploy.json')]",
+
+
+        "networkSecurityGroup": "[concat(parameters('templateRootUri'), 'templates/buildingBlocks/networkSecurityGroups/azuredeploy.json')]"
+      },
+      "parameter": {
+        "virtualNetwork": "[concat(parameters('parameterRootUri'), 'onpremise-rf', '/virtualNetwork.parameters.json')]",
+        "virtualMachineEX": "[concat(parameters('parameterRootUri'), 'onpremise-rf', '/virtualMachines-ex.parameters.json')]",
+        "virtualMachineSP": "[concat(parameters('parameterRootUri'), 'onpremise-rf', '/virtualMachines-sp.parameters.json')]",
+        "virtualMachineSFB": "[concat(parameters('parameterRootUri'), 'onpremise-rf', '/virtualMachines-sfb.parameters.json')]",
 
 
         "networkSecurityGroup": "[concat(parameters('parameterRootUri'), parameters('osType'), '/networkSecurityGroups.parameters.json')]",

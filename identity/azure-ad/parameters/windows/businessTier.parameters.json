@@ -11,7 +11,7 @@
             "loadBalancerType": "internal",
             "domainNameLabel": "",
             "internalLoadBalancerSettings": {
-              "privateIPAddress": "10.0.2.250",
+              "privateIPAddress": "10.3.2.250",
               "subnetName": "biz"
             }
           }
@@ -50,8 +50,8 @@
         "namePrefix": "ra-aad-ntier-biz",
         "computerNamePrefix": "cn",
         "size": "Standard_DS1_v2",
-        "adminUsername": "testuser",
-        "adminPassword": "AweS0me@PW",
+        "adminUsername": "admin",
+        "adminPassword": "P@ssW0rd1234!",
         "osType": "windows",
         "osAuthenticationType": "password",
         "sshPublicKey": "",

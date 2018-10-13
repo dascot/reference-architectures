@@ -5,7 +5,7 @@
     "virtualMachinesExtensionSettings": {
       "value": [
         {
-          "vms": [ "af-adc-vm1", "af-adc-vm2"],
+          "vms": [ "af-ping-vm1", "af-ping-vm2"],
           "extensions": [
             {
               "name": "join-ad-domain",

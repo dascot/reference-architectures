@@ -4,24 +4,25 @@
   "parameters": {
     "virtualMachinesSettings": {
       "value": {
-        "namePrefix": "ra-aad-ntier-mgmt",
-        "computerNamePrefix": "cn",
-        "size": "Standard_DS1_v2",
-        "adminUsername": "admin",
+        "namePrefix": "rf-ex",
+        "computerNamePrefix": "ex",
+        "size": "Standard_B1ms",
+        "osType": "Windows",
+        "adminUsername": "rf-admin",
         "adminPassword": "P@ssW0rd1234!",
-        "osType": "windows",
         "osAuthenticationType": "password",
-        "sshPublicKey": "",
         "nics": [
           {
             "isPublic": "true",
-            "isPrimary": "true",
-            "subnetName": "mgmt",
-            "privateIPAllocationMethod": "dynamic",
+            "subnetName": "ex",
+            "privateIPAllocationMethod": "Static",
+            "startingIPAddress": "192.168.12.4",
             "publicIPAllocationMethod": "static",
             "enableIPForwarding": false,
             "domainNameLabelPrefix": "",
-            "dnsServers": [ ]
+            "dnsServers": [
+            ],
+            "isPrimary": "true"
           }
         ],
         "imageReference": {
@@ -33,7 +34,7 @@
         "dataDisks": {
           "count": 1,
           "properties": {
-            "diskSizeGB": 128,
+            "diskSizeGB": 127,
             "caching": "None",
             "createOption": "Empty"
           }
@@ -44,23 +45,22 @@
         "extensions": [ ],
         "availabilitySet": {
           "useExistingAvailabilitySet": "No",
-          "name": ""
+          "name": "rf-onpremise-ex-as"
         }
       }
     },
     "virtualNetworkSettings": {
       "value": {
-        "name": "ra-aad-ntier-vnet",
-        "resourceGroup": "ra-aad-ntier-rg"
+        "name": "rf-onpremise-vnet",
+        "resourceGroup": "rf-onpremise-rg"
       }
     },
     "buildingBlockSettings": {
       "value": {
-        "storageAccountsCount": 1,
-        "vmCount": 1,
+        "storageAccountsCount": 2,
+        "vmCount": 2,
         "vmStartIndex": 1
       }
     }
   }
 }
-

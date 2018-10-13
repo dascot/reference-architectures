@@ -31,6 +31,7 @@
       <Visible>False</Visible>
     </None>
     <None Include="extensions\adds-forest.ps1" />
+    <None Include="extensions\adds-forest-rf.ps1" />
     <None Include="extensions\adds.ps1" />
     <None Include="extensions\linux\install-apache.sh" />
     <None Include="extensions\windows\iisaspnet.ps1.zip" />
@@ -41,12 +42,25 @@
     <None Include="parameters\linux\virtualNetwork.parameters.json" />
     <None Include="parameters\linux\webTier.parameters.json" />
     <None Include="parameters\onpremise\virtualMachines-adc-joindomain.parameters.json" />
+    <None Include="parameters\onpremise\virtualMachines-ping-joindomain.parameters.json" />
     <None Include="parameters\onpremise\add-adds-domain-controller.parameters.json" />
     <None Include="parameters\onpremise\create-adds-forest-extension.parameters.json" />
     <None Include="parameters\onpremise\virtualMachines-adc.parameters.json" />
     <None Include="parameters\onpremise\virtualMachines-adds.parameters.json" />
+    <None Include="parameters\onpremise\virtualMachines-ping.parameters.json" />
     <None Include="parameters\onpremise\virtualNetwork-adds-dns.parameters.json" />
     <None Include="parameters\onpremise\virtualNetwork.parameters.json" />
+    <None Include="parameters\onpremise-rf\virtualMachines-ex-joindomain.parameters.json" />
+    <None Include="parameters\onpremise-rf\virtualMachines-sp-joindomain.parameters.json" />
+    <None Include="parameters\onpremise-rf\virtualMachines-sfb-joindomain.parameters.json" />
+    <None Include="parameters\onpremise-rf\add-adds-domain-controller.parameters.json" />
+    <None Include="parameters\onpremise-rf\create-adds-forest-extension.parameters.json" />
+    <None Include="parameters\onpremise-rf\virtualMachines-ex.parameters.json" />
+    <None Include="parameters\onpremise-rf\virtualMachines-sp.parameters.json" />
+    <None Include="parameters\onpremise-rf\virtualMachines-sfb.parameters.json" />
+    <None Include="parameters\onpremise-rf\virtualMachines-adds.parameters.json" />
+    <None Include="parameters\onpremise-rf\virtualNetwork-adds-dns.parameters.json" />
+    <None Include="parameters\onpremise-rf\virtualNetwork.parameters.json" />
     <None Include="parameters\windows\businessTier.parameters.json" />
     <None Include="parameters\windows\dataTier.parameters.json" />
     <None Include="parameters\windows\managementTier.parameters.json" />

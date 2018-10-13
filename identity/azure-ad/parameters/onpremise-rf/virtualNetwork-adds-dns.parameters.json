@@ -1,0 +1,37 @@
+﻿{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "virtualNetworkSettings": {
+      "value": {
+        "name": "rf-onpremise-vnet",
+        "resourceGroup": "rf-onpremise-rg",
+        "addressPrefixes": [
+          "192.168.10.0/16"
+        ],
+        "subnets": [
+          {
+            "name": "adds",
+            "addressPrefix": "192.168.10.0/24"
+          },
+          {
+            "name": "ex",
+            "addressPrefix": "192.168.12.0/24"
+          },
+          {
+            "name": "sp",
+            "addressPrefix": "192.168.13.0/24"
+          },
+          {
+            "name": "sfb",
+            "addressPrefix": "192.168.14.0/24"
+          }
+        ],
+        "dnsServers": [
+          "192.168.10.4",
+          "192.168.10.5"
+        ]
+      }
+    }
+  }
+}

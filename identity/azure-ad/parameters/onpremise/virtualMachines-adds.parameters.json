@@ -4,12 +4,12 @@
   "parameters": {
     "virtualMachinesSettings": {
       "value": {
-        "namePrefix": "ra-aad-onpremise-ad",
-        "computerNamePrefix": "ad",
-        "size": "Standard_DS3_v2",
+        "namePrefix": "af-dc",
+        "computerNamePrefix": "dc",
+        "size": "Standard_B1ms",
         "osType": "Windows",
-        "adminUsername": "testuser",
-        "adminPassword": "AweS0me@PW",
+        "adminUsername": "af-admin",
+        "adminPassword": "P@ssW0rd1234!",
         "osAuthenticationType": "password",
         "nics": [
           {
@@ -45,14 +45,14 @@
         "extensions": [ ],
         "availabilitySet": {
           "useExistingAvailabilitySet": "No",
-          "name": "ra-aad-onpremise-ad-as"
+          "name": "af-onpremise-ad-as"
         }
       }
     },
     "virtualNetworkSettings": {
       "value": {
-        "name": "ra-aad-onpremise-vnet",
-        "resourceGroup": "ra-aad-onpremise-rg"
+        "name": "af-onpremise-vnet",
+        "resourceGroup": "af-onpremise-rg"
       }
     },
     "buildingBlockSettings": {

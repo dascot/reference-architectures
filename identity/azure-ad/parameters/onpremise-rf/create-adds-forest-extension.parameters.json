@@ -5,7 +5,7 @@
     "virtualMachinesExtensionSettings": {
       "value": [
         {
-          "vms": [ "af-dc-vm1" ],
+          "vms": [ "rf-dc-vm1" ],
           "extensions": [
             {
               "name": "install-adds-forest",
@@ -13,15 +13,15 @@
               "type": "CustomScriptExtension",
               "typeHandlerVersion": "1.8",
               "autoUpgradeMinorVersion": false,
-              "settingsConfigMapperUri": "https://raw.githubusercontent.com/mspnp/reference-architectures/master/identity/azure-ad/templates/onpremise/ad-forest-extension-settings-mapper.json",
+              "settingsConfigMapperUri": "https://raw.githubusercontent.com/mspnp/reference-architectures/master/identity/azure-ad/templates/onpremise-rf/ad-forest-extension-settings-mapper.json",
               "settingsConfig": {
                 "activeDirectorySettings": {
-                  "domainName": "af.com",
-                  "domainNetbiosName": "af",
+                  "domainName": "rf.com",
+                  "domainNetbiosName": "rf",
                   "safeModePassword": "P@ssW0rd1234!"
                 },
                 "fileUris": [
-                  "https://raw.githubusercontent.com/mspnp/reference-architectures/master/identity/azure-ad/extensions/adds-forest.ps1"
+                  "https://raw.githubusercontent.com/mspnp/reference-architectures/master/identity/azure-ad/extensions/adds-forest-rf.ps1"
                 ]
               },
               "protectedSettingsConfig": {

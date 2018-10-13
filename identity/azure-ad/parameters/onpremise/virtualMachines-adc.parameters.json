@@ -4,12 +4,12 @@
   "parameters": {
     "virtualMachinesSettings": {
       "value": {
-        "namePrefix": "ra-aad-onpremise-adc",
+        "namePrefix": "af-adc",
         "computerNamePrefix": "adc",
-        "size": "Standard_DS3_v2",
+        "size": "Standard_B1ms",
         "osType": "Windows",
-        "adminUsername": "testuser",
-        "adminPassword": "AweS0me@PW",
+        "adminUsername": "af-admin",
+        "adminPassword": "P@ssW0rd1234!",
         "osAuthenticationType": "password",
         "nics": [
           {
@@ -45,20 +45,20 @@
         "extensions": [ ],
         "availabilitySet": {
           "useExistingAvailabilitySet": "No",
-          "name": "ra-aad-onpremise-adc-as"
+          "name": "af-onpremise-adc-as"
         }
       }
     },
     "virtualNetworkSettings": {
       "value": {
-        "name": "ra-aad-onpremise-vnet",
-        "resourceGroup": "ra-aad-onpremise-rg"
+        "name": "af-onpremise-vnet",
+        "resourceGroup": "af-onpremise-rg"
       }
     },
     "buildingBlockSettings": {
       "value": {
         "storageAccountsCount": 2,
-        "vmCount": 3,
+        "vmCount": 2,
         "vmStartIndex": 1
       }
     }
