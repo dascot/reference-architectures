@@ -6,7 +6,7 @@
       "value": {
         "namePrefix": "af-adc",
         "computerNamePrefix": "adc",
-        "size": "Standard_B1ms",
+        "size": "Standard_B2ms",
         "osType": "Windows",
         "adminUsername": "af-admin",
         "adminPassword": "P@ssW0rd1234!",

@@ -6,7 +6,7 @@
       "value": {
         "namePrefix": "rf-dc",
         "computerNamePrefix": "rf",
-        "size": "Standard_B1ms",
+        "size": "Standard_B2ms",
         "osType": "Windows",
         "adminUsername": "rf-admin",
         "adminPassword": "P@ssW0rd1234!",
