@@ -16,7 +16,7 @@
             "isPublic": "true",
             "subnetName": "sfb",
             "privateIPAllocationMethod": "Static",
-            "startingIPAddress": "192.168.14.4",
+            "startingIPAddress": "10.5.3.4",
             "publicIPAllocationMethod": "static",
             "enableIPForwarding": false,
             "domainNameLabelPrefix": "",
