@@ -7,7 +7,7 @@
         "name": "af-onpremise-vnet",
         "resourceGroup": "af-onpremise-rg",
         "addressPrefixes": [
-          "10.4.0.0/24"
+          "10.4.0.0/16"
         ],
         "subnets": [
           {
