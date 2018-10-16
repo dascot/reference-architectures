@@ -7,26 +7,25 @@
         "name": "af-onpremise-vnet",
         "resourceGroup": "af-onpremise-rg",
         "addressPrefixes": [
-          "192.168.0.0/16"
+          "10.4.0.0/24"
         ],
         "subnets": [
           {
             "name": "adds",
-            "addressPrefix": "192.168.0.0/24"
+            "addressPrefix": "10.4.0.0/24"
           },
           {
             "name": "adc",
-            "addressPrefix": "192.168.1.0/24"
+            "addressPrefix": "10.4.1.0/24"
           },
           {
             "name": "ping",
-            "addressPrefix": "192.168.2.0/24"
+            "addressPrefix": "10.4.2.0/24"
           }
         ],
         "dnsServers": [
-          "192.168.0.4",
-          "192.168.0.5",
-          "168.63.129.16"
+          "10.4.0.4",
+          "10.4.0.5"
         ]
       }
     }
