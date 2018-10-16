@@ -16,7 +16,7 @@
             "isPublic": "true",
             "subnetName": "sp",
             "privateIPAllocationMethod": "Static",
-            "startingIPAddress": "192.168.13.4",
+            "startingIPAddress": "10.5.2.4",
             "publicIPAllocationMethod": "static",
             "enableIPForwarding": false,
             "domainNameLabelPrefix": "",
