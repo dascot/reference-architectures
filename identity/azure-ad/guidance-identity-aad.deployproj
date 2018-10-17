@@ -69,6 +69,8 @@
     <None Include="parameters\windows\webTier.parameters.json" />
     <None Include="templates\onpremise\ad-forest-extension-settings-mapper.json" />
     <None Include="templates\onpremise\adds-domain-controller-extension-settings-mapper.json" />
+    <None Include="templates\onpremise-rf\ad-forest-extension-settings-mapper.json" />
+    <None Include="templates\onpremise-rf\adds-domain-controller-extension-settings-mapper.json" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="azuredeploy.json" />
