@@ -7,29 +7,30 @@
         "name": "rf-onpremise-vnet",
         "resourceGroup": "rf-onpremise-rg",
         "addressPrefixes": [
-          "10.5.0.0/16"
+          "193.200.0.0/16"
         ],
         "subnets": [
           {
             "name": "adds",
-            "addressPrefix": "10.5.0.0/24"
+            "addressPrefix": "193.200.0.0/24"
           },
           {
             "name": "ex",
-            "addressPrefix": "10.5.1.0/24"
+            "addressPrefix": "193.200.1.0/24"
           },
           {
             "name": "sp",
-            "addressPrefix": "10.5.2.0/24"
+            "addressPrefix": "193.200.2.0/24"
           },
           {
             "name": "sfb",
-            "addressPrefix": "10.5.3.0/24"
+            "addressPrefix": "193.200.3.0/24"
           }
         ],
         "dnsServers": [
-          "10.5.0.4",
-          "10.5.0.5"
+          "193.200.0.4",
+          "193.200.0.5",
+          "168.63.129.16"
         ]
       }
     }

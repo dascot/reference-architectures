@@ -16,7 +16,7 @@
             "isPublic": "true",
             "subnetName": "ex",
             "privateIPAllocationMethod": "Static",
-            "startingIPAddress": "10.5.1.4",
+            "startingIPAddress": "193.200.1.4",
             "publicIPAllocationMethod": "static",
             "enableIPForwarding": false,
             "domainNameLabelPrefix": "",

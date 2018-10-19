@@ -16,7 +16,7 @@
             "isPublic": "true",
             "subnetName": "adc",
             "privateIPAllocationMethod": "Static",
-            "startingIPAddress": "10.4.1.4",
+            "startingIPAddress": "193.100.1.4",
             "publicIPAllocationMethod": "static",
             "enableIPForwarding": false,
             "domainNameLabelPrefix": "",
