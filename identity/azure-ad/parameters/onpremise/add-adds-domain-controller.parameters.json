@@ -41,7 +41,7 @@
                   "safeModePassword": "P@ssW0rd1234!"
                 },
                 "fileUris": [
-                  "https://raw.githubusercontent.com/dascot/reference-architectures/master/identity/azure-ad/extensions/adds.ps1"
+                  "https://raw.githubusercontent.com/dascot/reference-architectures/master/identity/azure-ad/extensions/add-controller-af.ps1"
                 ]
               },
               "protectedSettingsConfig": {
