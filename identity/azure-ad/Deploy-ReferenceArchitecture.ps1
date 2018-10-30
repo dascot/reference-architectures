@@ -95,10 +95,10 @@ if ($Mode -eq "onpremise") {
         -TemplateUri $virtualMachineExtensionsTemplate.AbsoluteUri -TemplateParameterFile $onpremiseCreateAddsForestExtensionParametersFile
 
 	#7 af-onpremise-adds-dc-deployment
-    # Write-Host "Creating Account Forest ADDS domain controller..." -ForegroundColor Yellow
-    #vNew-AzureRmResourceGroupDeployment -Name "af-onpremise-adds-dc-deployment" `
-    #    -ResourceGroupName $onpremiseNetworkResourceGroup.ResourceGroupName `
-    #    -TemplateUri $virtualMachineExtensionsTemplate.AbsoluteUri -TemplateParameterFile $onpremiseAddAddsDomainControllerExtensionParametersFile
+     Write-Host "Creating Account Forest ADDS domain controller..." -ForegroundColor Yellow
+    New-AzureRmResourceGroupDeployment -Name "af-onpremise-adds-dc-deployment" `
+        -ResourceGroupName $onpremiseNetworkResourceGroup.ResourceGroupName `
+        -TemplateUri $virtualMachineExtensionsTemplate.AbsoluteUri -TemplateParameterFile $onpremiseAddAddsDomainControllerExtensionParametersFile
 
 	#8 af-onpremise-adds-adc-deployment
     Write-Host "Join Account Forest AD Connect servers to Domain......" -ForegroundColor Yellow
@@ -176,10 +176,10 @@ elseif ($Mode -eq "onpremise-rf") {
         -TemplateUri $virtualMachineExtensionsTemplate.AbsoluteUri -TemplateParameterFile $onpremiseCreateAddsForestExtensionParametersFile
 
 	#8 rf-onpremise-adds-dc-deployment
-   # Write-Host "Creating ADDS domain controller..." -ForegroundColor Yellow
-   # New-AzureRmResourceGroupDeployment -Name "rf-onpremise-adds-dc-deployment" `
-   #     -ResourceGroupName $onpremiseNetworkResourceGroup.ResourceGroupName `
-   #     -TemplateUri $virtualMachineExtensionsTemplate.AbsoluteUri -TemplateParameterFile $onpremiseAddAddsDomainControllerExtensionParametersFile
+   Write-Host "Creating ADDS domain controller..." -ForegroundColor Yellow
+   New-AzureRmResourceGroupDeployment -Name "rf-onpremise-adds-dc-deployment" `
+        -ResourceGroupName $onpremiseNetworkResourceGroup.ResourceGroupName `
+        -TemplateUri $virtualMachineExtensionsTemplate.AbsoluteUri -TemplateParameterFile $onpremiseAddAddsDomainControllerExtensionParametersFile
 
 	#9 rf-onpremise-adds-ex-deployment
     Write-Host "Join Resource Forest Exchange servers to Domain......" -ForegroundColor Yellow
