@@ -24,8 +24,29 @@
               "protectedSettingsConfig": {
                 "Password": "P@ssW0rd1234!"
               }
+            },
+            {
+              "name": "install-adds",
+              "publisher": "Microsoft.Compute",
+              "type": "CustomScriptExtension",
+              "typeHandlerVersion": "1.8",
+              "autoUpgradeMinorVersion": false,
+              "settingsConfigMapperUri": "https://raw.githubusercontent.com/dascot/reference-architectures/master/identity/azure-ad/templates/onpremise-rf/adds-domain-controller-extension-settings-mapper.json",
+              "settingsConfig": {
+                "activeDirectorySettings": {
+                  "domainName": "rf.com",
+                  "adminUser": "rf-admin",
+                  "adminPassword": "P@ssW0rd1234!",
+                  "siteName": "Default-First-Site-Name",
+                  "safeModePassword": "P@ssW0rd1234!"
+                },
+                "fileUris": [
+                  "https://raw.githubusercontent.com/dascot/reference-architectures/master/identity/azure-ad/extensions/adds.ps1"
+                ]
+              },
+              "protectedSettingsConfig": {
+              }
             }
-
           ]
         }
       ]

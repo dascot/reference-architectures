@@ -20,13 +20,13 @@ $secSafeModePassword = ConvertTo-SecureString $SafeModePassword -AsPlainText -Fo
 Install-ADDSForest `
 -SafeModeAdministratorPassword $secSafeModePassword `
 -CreateDnsDelegation:$false `
--DatabasePath "F:\Windows\NTDS" `
+-DatabasePath "F:\Adds\NTDS" `
 -DomainMode "Win2012R2" `
 -DomainName $DomainName `
 -DomainNetbiosName $DomainNetbiosName `
 -ForestMode "Win2012R2" `
 -InstallDns:$true `
--LogPath "F:\Windows\NTDS" `
+-LogPath "F:\Adds\NTDS" `
 -NoRebootOnCompletion:$false `
--SysvolPath "F:\Windows\SYSVOL" `
+-SysvolPath "F:\Adds\SYSVOL" `
 -Force:$true
