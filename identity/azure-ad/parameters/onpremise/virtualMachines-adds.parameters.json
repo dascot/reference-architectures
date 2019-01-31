@@ -4,16 +4,16 @@
   "parameters": {
     "virtualMachinesSettings": {
       "value": {
-        "namePrefix": "af-dc",
+        "namePrefix": "js-dc",
         "computerNamePrefix": "dc",
         "size": "Standard_B2ms",
         "osType": "Windows",
-        "adminUsername": "af-admin",
+        "adminUsername": "js-admin",
         "adminPassword": "P@ssW0rd1234!",
         "osAuthenticationType": "password",
         "nics": [
           {
-            "isPublic": "true",
+            "isPublic": "false",
             "subnetName": "adds",
             "privateIPAllocationMethod": "Static",
             "publicIPAllocationMethod": "static",
@@ -45,14 +45,14 @@
         "extensions": [ ],
         "availabilitySet": {
           "useExistingAvailabilitySet": "No",
-          "name": "af-onpremise-ad-as"
+          "name": "js-onpremise-ad-as"
         }
       }
     },
     "virtualNetworkSettings": {
       "value": {
-        "name": "af-onpremise-vnet",
-        "resourceGroup": "af-onpremise-rg"
+        "name": "js-onpremise-vnet",
+        "resourceGroup": "js-onpremise-rg"
       }
     },
     "buildingBlockSettings": {

@@ -4,16 +4,16 @@
   "parameters": {
     "virtualMachinesSettings": {
       "value": {
-        "namePrefix": "af-adc",
+        "namePrefix": "js-adc",
         "computerNamePrefix": "adc",
         "size": "Standard_B2ms",
         "osType": "Windows",
-        "adminUsername": "af-admin",
+        "adminUsername": "js-admin",
         "adminPassword": "P@ssW0rd1234!",
         "osAuthenticationType": "password",
         "nics": [
           {
-            "isPublic": "true",
+            "isPublic": "false",
             "subnetName": "adc",
             "privateIPAllocationMethod": "Static",
             "startingIPAddress": "193.100.1.4",
@@ -45,14 +45,14 @@
         "extensions": [ ],
         "availabilitySet": {
           "useExistingAvailabilitySet": "No",
-          "name": "af-onpremise-adc-as"
+          "name": "js-onpremise-adc-as"
         }
       }
     },
     "virtualNetworkSettings": {
       "value": {
-        "name": "af-onpremise-vnet",
-        "resourceGroup": "af-onpremise-rg"
+        "name": "js-onpremise-vnet",
+        "resourceGroup": "js-onpremise-rg"
       }
     },
     "buildingBlockSettings": {

@@ -5,7 +5,7 @@
     "virtualMachinesExtensionSettings": {
       "value": [
         {
-          "vms": [ "rf-dc-vm2" ],
+          "vms": [ "ds-dc-vm2" ],
           "extensions": [
             {
               "name": "join-ad-domain",
@@ -15,9 +15,9 @@
               "autoUpgradeMinorVersion": true,
               "settingsConfigMapperUri": "https://raw.githubusercontent.com/dascot/template-building-blocks/v1.0.0/templates/resources/Microsoft.Compute/virtualMachines/extensions/vm-extension-passthrough-settings-mapper.json",
               "settingsConfig": {
-                "Name": "rf.com",
+                "Name": "dmscon.com",
                 "OUPath": "",
-                "User": "rf.com\\rf-admin",
+                "User": "dmscon.com\\ds-admin",
                 "Restart": true,
                 "Options": 3
               },
@@ -34,8 +34,8 @@
               "settingsConfigMapperUri": "https://raw.githubusercontent.com/dascot/reference-architectures/master/identity/azure-ad/templates/onpremise-rf/adds-domain-controller-extension-settings-mapper.json",
               "settingsConfig": {
                 "activeDirectorySettings": {
-                  "domainName": "rf.com",
-                  "adminUser": "rf-admin",
+                  "domainName": "dmscon.com",
+                  "adminUser": "ds-admin",
                   "adminPassword": "P@ssW0rd1234!",
                   "siteName": "Default-First-Site-Name",
                   "safeModePassword": "P@ssW0rd1234!"

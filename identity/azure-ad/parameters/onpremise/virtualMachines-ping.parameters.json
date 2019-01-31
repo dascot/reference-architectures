@@ -4,16 +4,16 @@
   "parameters": {
     "virtualMachinesSettings": {
       "value": {
-        "namePrefix": "af-ping",
+        "namePrefix": "js-ping",
         "computerNamePrefix": "ping",
         "size": "Standard_B2ms",
         "osType": "Windows",
-        "adminUsername": "af-admin",
+        "adminUsername": "js-admin",
         "adminPassword": "P@ssW0rd1234!",
         "osAuthenticationType": "password",
         "nics": [
           {
-            "isPublic": "true",
+            "isPublic": "false",
             "subnetName": "ping",
             "privateIPAllocationMethod": "Static",
             "startingIPAddress": "193.100.2.4",
@@ -45,14 +45,14 @@
         "extensions": [ ],
         "availabilitySet": {
           "useExistingAvailabilitySet": "No",
-          "name": "af-onpremise-ping-as"
+          "name": "js-onpremise-ping-as"
         }
       }
     },
     "virtualNetworkSettings": {
       "value": {
-        "name": "af-onpremise-vnet",
-        "resourceGroup": "af-onpremise-rg"
+        "name": "js-onpremise-vnet",
+        "resourceGroup": "js-onpremise-rg"
       }
     },
     "buildingBlockSettings": {

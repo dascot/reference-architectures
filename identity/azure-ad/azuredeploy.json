@@ -41,6 +41,7 @@
         "virtualNetwork": "[concat(parameters('parameterRootUri'), 'onpremise', '/virtualNetwork.parameters.json')]",
         "virtualMachine": "[concat(parameters('parameterRootUri'), 'onpremise', '/virtualMachines-adc.parameters.json')]",
         "virtualMachinePing": "[concat(parameters('parameterRootUri'), 'onpremise', '/virtualMachines-ping.parameters.json')]",
+        "virtualMachineWKS": "[concat(parameters('parameterRootUri'), 'onpremise', '/virtualMachines-wks.parameters.json')]",
 
 
         "networkSecurityGroup": "[concat(parameters('parameterRootUri'), parameters('osType'), '/networkSecurityGroups.parameters.json')]",

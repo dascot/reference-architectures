@@ -4,8 +4,8 @@
   "parameters": {
     "virtualNetworkSettings": {
       "value": {
-        "name": "af-onpremise-vnet",
-        "resourceGroup": "af-onpremise-rg",
+        "name": "js-onpremise-vnet",
+        "resourceGroup": "js-onpremise-rg",
         "addressPrefixes": [
           "193.100.0.0/16"
         ],
@@ -21,6 +21,10 @@
           {
             "name": "ping",
             "addressPrefix": "193.100.2.0/24"
+          },
+          {
+            "name": "wks",
+            "addressPrefix": "193.100.3.0/24"
           }
         ],
         "dnsServers": [

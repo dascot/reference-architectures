@@ -5,7 +5,7 @@
     "virtualMachinesExtensionSettings": {
       "value": [
         {
-          "vms": [ "rf-dc-vm1" ],
+          "vms": [ "ds-dc-vm1" ],
           "extensions": [
             {
               "name": "install-adds-forest",
@@ -16,8 +16,8 @@
               "settingsConfigMapperUri": "https://raw.githubusercontent.com/dascot/reference-architectures/master/identity/azure-ad/templates/onpremise-rf/ad-forest-extension-settings-mapper.json",
               "settingsConfig": {
                 "activeDirectorySettings": {
-                  "domainName": "rf.com",
-                  "domainNetbiosName": "rf",
+                  "domainName": "dmscon.com",
+                  "domainNetbiosName": "dmscon",
                   "safeModePassword": "P@ssW0rd1234!"
                 },
                 "fileUris": [

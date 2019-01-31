@@ -4,16 +4,16 @@
   "parameters": {
     "virtualMachinesSettings": {
       "value": {
-        "namePrefix": "rf-ex",
+        "namePrefix": "ds-ex",
         "computerNamePrefix": "ex",
         "size": "Standard_B2ms",
         "osType": "Windows",
-        "adminUsername": "rf-admin",
+        "adminUsername": "ds-admin",
         "adminPassword": "P@ssW0rd1234!",
         "osAuthenticationType": "password",
         "nics": [
           {
-            "isPublic": "true",
+            "isPublic": "false",
             "subnetName": "ex",
             "privateIPAllocationMethod": "Static",
             "startingIPAddress": "193.200.1.4",
@@ -45,14 +45,14 @@
         "extensions": [ ],
         "availabilitySet": {
           "useExistingAvailabilitySet": "No",
-          "name": "rf-onpremise-ex-as"
+          "name": "ds-onpremise-ex-as"
         }
       }
     },
     "virtualNetworkSettings": {
       "value": {
-        "name": "rf-onpremise-vnet",
-        "resourceGroup": "rf-onpremise-rg"
+        "name": "ds-onpremise-vnet",
+        "resourceGroup": "ds-onpremise-rg"
       }
     },
     "buildingBlockSettings": {

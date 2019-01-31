@@ -4,16 +4,16 @@
   "parameters": {
     "virtualMachinesSettings": {
       "value": {
-        "namePrefix": "rf-sfb",
+        "namePrefix": "ds-sfb",
         "computerNamePrefix": "sfb",
         "size": "Standard_B2ms",
         "osType": "Windows",
-        "adminUsername": "rf-admin",
+        "adminUsername": "ds-admin",
         "adminPassword": "P@ssW0rd1234!",
         "osAuthenticationType": "password",
         "nics": [
           {
-            "isPublic": "true",
+            "isPublic": "false",
             "subnetName": "sfb",
             "privateIPAllocationMethod": "Static",
             "startingIPAddress": "193.200.3.4",
@@ -45,14 +45,14 @@
         "extensions": [ ],
         "availabilitySet": {
           "useExistingAvailabilitySet": "No",
-          "name": "rf-onpremise-sfb-as"
+          "name": "ds-onpremise-sfb-as"
         }
       }
     },
     "virtualNetworkSettings": {
       "value": {
-        "name": "rf-onpremise-vnet",
-        "resourceGroup": "rf-onpremise-rg"
+        "name": "ds-onpremise-vnet",
+        "resourceGroup": "ds-onpremise-rg"
       }
     },
     "buildingBlockSettings": {

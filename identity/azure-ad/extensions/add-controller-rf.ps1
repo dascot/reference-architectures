@@ -3,7 +3,7 @@ Configuration CreateDomainController {
     #v1.4
     (
         [Parameter(Mandatory=$True)]
-        [string]$AdminUser = "rf-admin",
+        [string]$AdminUser = "ds-admin",
         
         [Parameter(Mandatory=$True)]
         [string]$AdminPassword = "P@ssW0rd1234!",
@@ -12,10 +12,10 @@ Configuration CreateDomainController {
         [string]$SafeModePassword = "P@ssW0rd1234!",
 
         [Parameter(Mandatory)]
-        [string]$DomainName = "rf.com",
+        [string]$DomainName = "dmscon.com",
 
         [Parameter(Mandatory)]
-        [string]$DomainNetbiosName = "rf",
+        [string]$DomainNetbiosName = "dmscon",
 
         [Parameter(Mandatory)]
         [string]$PrimaryDcIpAddress = "193.200.0.4",

@@ -49,66 +49,68 @@ if ($Mode -eq "onpremise") {
 	$onpremiseAddAddsDomainControllerExtensionParametersFile = [System.IO.Path]::Combine($PSScriptRoot, "parameters\onpremise\add-adds-domain-controller.parameters.json")
 	$onpremisADCJoinDomainExtensionParametersFile = [System.IO.Path]::Combine($PSScriptRoot, "parameters\onpremise\virtualMachines-adc-joindomain.parameters.json")
 	$onpremisPingJoinDomainExtensionParametersFile = [System.IO.Path]::Combine($PSScriptRoot, "parameters\onpremise\virtualMachines-ping-joindomain.parameters.json")
+	$onpremisWKSJoinDomainExtensionParametersFile = [System.IO.Path]::Combine($PSScriptRoot, "parameters\onpremise\virtualMachines-wks-joindomain.parameters.json")
 	$azureAdcVirtualMachinesParametersFile = [System.IO.Path]::Combine($PSScriptRoot, "parameters\onpremise\virtualMachines-adc.parameters.json")
 	$azurePingVirtualMachinesParametersFile = [System.IO.Path]::Combine($PSScriptRoot, "parameters\onpremise\virtualMachines-ping.parameters.json")
+	$azureWKSVirtualMachinesParametersFile = [System.IO.Path]::Combine($PSScriptRoot, "parameters\onpremise\virtualMachines-wks.parameters.json")
 
 
-	$onpremiseNetworkResourceGroupName = "af-onpremise-rg"
+	$onpremiseNetworkResourceGroupName = "js-onpremise-rg"
 
 	# Azure Account Forest Onpremise Deployments
-	#1 af-onpremise-vnet-deployment
+	#1 js-onpremise-vnet-deployment
     $onpremiseNetworkResourceGroup = New-AzureRmResourceGroup -Name $onpremiseNetworkResourceGroupName -Location $Location
     Write-Host "Creating Account Forest onpremise virtual network..." -ForegroundColor Yellow
-    New-AzureRmResourceGroupDeployment -Name "af-onpremise-vnet-deployment" `
+    New-AzureRmResourceGroupDeployment -Name "js-onpremise-vnet-deployment" `
         -ResourceGroupName $onpremiseNetworkResourceGroup.ResourceGroupName -TemplateUri $virtualNetworkTemplate.AbsoluteUri `
         -TemplateParameterFile $onpremiseVirtualNetworkParametersFile
 
-	#2 af-onpremise-adc-deployment
+	#2 js-onpremise-adc-deployment
     Write-Host "Deploying Account Forest AD Connect servers..." -ForegroundColor Yellow
-    New-AzureRmResourceGroupDeployment -Name "af-onpremise-adc-deployment" `
+    New-AzureRmResourceGroupDeployment -Name "js-onpremise-adc-deployment" `
 		-ResourceGroupName $onpremiseNetworkResourceGroup.ResourceGroupName `
         -TemplateUri $virtualMachineTemplate.AbsoluteUri -TemplateParameterFile $azureAdcVirtualMachinesParametersFile
 
-	#3 af-onpremise-ping-deployment
+	#3 js-onpremise-ping-deployment
     Write-Host "Deploying Account Forest Ping servers..." -ForegroundColor Yellow
-    New-AzureRmResourceGroupDeployment -Name "af-onpremise-ping-deployment" `
+    New-AzureRmResourceGroupDeployment -Name "js-onpremise-ping-deployment" `
 		-ResourceGroupName $onpremiseNetworkResourceGroup.ResourceGroupName `
         -TemplateUri $virtualMachineTemplate.AbsoluteUri -TemplateParameterFile $azurePingVirtualMachinesParametersFile
 
-	#4 af-onpremise-adds-deployment
+	#4 js-onpremise-adds-deployment
     Write-Host "Deploying Account Forest ADDS servers..." -ForegroundColor Yellow
-    New-AzureRmResourceGroupDeployment -Name "af-onpremise-adds-deployment" `
+    New-AzureRmResourceGroupDeployment -Name "js-onpremise-adds-deployment" `
         -ResourceGroupName $onpremiseNetworkResourceGroup.ResourceGroupName `
         -TemplateUri $virtualMachineTemplate.AbsoluteUri -TemplateParameterFile $onpremiseADDSVirtualMachinesParametersFile
 
-	#5 af-onpremise-dns-vnet-deployment
+	#5 js-onpremise-dns-vnet-deployment
     # Remove the Azure DNS entry since the forest will create a DNS forwarding entry.
     Write-Host "Updating Account Forest virtual network DNS servers..." -ForegroundColor Yellow
-    New-AzureRmResourceGroupDeployment -Name "af-onpremise-dns-vnet-deployment" `
+    New-AzureRmResourceGroupDeployment -Name "js-onpremise-dns-vnet-deployment" `
         -ResourceGroupName $onpremiseNetworkResourceGroup.ResourceGroupName -TemplateUri $virtualNetworkTemplate.AbsoluteUri `
         -TemplateParameterFile $onpremiseVirtualNetworkDnsParametersFile
 
-	#6 af-onpremise-adds-forest-deployment
+	#6 js-onpremise-adds-forest-deployment
     Write-Host "Creating Account Forest ADDS forest..." -ForegroundColor Yellow
-    New-AzureRmResourceGroupDeployment -Name "af-onpremise-adds-forest-deployment" `
+    New-AzureRmResourceGroupDeployment -Name "js-onpremise-adds-forest-deployment" `
         -ResourceGroupName $onpremiseNetworkResourceGroup.ResourceGroupName `
         -TemplateUri $virtualMachineExtensionsTemplate.AbsoluteUri -TemplateParameterFile $onpremiseCreateAddsForestExtensionParametersFile
 
-	#7 af-onpremise-adds-dc-deployment
+	#7 js-onpremise-adds-dc-deployment
      Write-Host "Creating Account Forest ADDS domain controller..." -ForegroundColor Yellow
-    New-AzureRmResourceGroupDeployment -Name "af-onpremise-adds-dc-deployment" `
+    New-AzureRmResourceGroupDeployment -Name "js-onpremise-adds-dc-deployment" `
         -ResourceGroupName $onpremiseNetworkResourceGroup.ResourceGroupName `
         -TemplateUri $virtualMachineExtensionsTemplate.AbsoluteUri -TemplateParameterFile $onpremiseAddAddsDomainControllerExtensionParametersFile
 
-	#8 af-onpremise-adds-adc-deployment
+	#8 js-onpremise-adds-adc-deployment
     Write-Host "Join Account Forest AD Connect servers to Domain......" -ForegroundColor Yellow
-    New-AzureRmResourceGroupDeployment -Name "af-onpremise-adds-adc-deployment" `
+    New-AzureRmResourceGroupDeployment -Name "js-onpremise-adds-adc-deployment" `
         -ResourceGroupName $onpremiseNetworkResourceGroup.ResourceGroupName `
         -TemplateUri $virtualMachineExtensionsTemplate.AbsoluteUri -TemplateParameterFile $onpremisADCJoinDomainExtensionParametersFile
 
-	#9 af-onpremise-ping-deployment
+	#9 js-onpremise-ping-deployment
     Write-Host "Join Account Forest Ping servers to Domain......" -ForegroundColor Yellow
-    New-AzureRmResourceGroupDeployment -Name "af-onpremise-adds-ping-deployment" `
+    New-AzureRmResourceGroupDeployment -Name "js-onpremise-adds-ping-deployment" `
         -ResourceGroupName $onpremiseNetworkResourceGroup.ResourceGroupName `
         -TemplateUri $virtualMachineExtensionsTemplate.AbsoluteUri -TemplateParameterFile $onpremisPingJoinDomainExtensionParametersFile
 }
@@ -128,74 +130,74 @@ elseif ($Mode -eq "onpremise-rf") {
 	$azureSFBVirtualMachinesParametersFile = [System.IO.Path]::Combine($PSScriptRoot, "parameters\onpremise-rf\virtualMachines-sfb.parameters.json")
 
 
-	$onpremiseNetworkResourceGroupName = "rf-onpremise-rg"
+	$onpremiseNetworkResourceGroupName = "ds-onpremise-rg"
 
 	# Azure Resource Forest Onpremise Deployments
-	#1 rf-onpremise-vnet-deployment
+	#1 ds-onpremise-vnet-deployment
     $onpremiseNetworkResourceGroup = New-AzureRmResourceGroup -Name $onpremiseNetworkResourceGroupName -Location $Location
     Write-Host "Creating Resource Forest onpremise virtual network..." -ForegroundColor Yellow
-    New-AzureRmResourceGroupDeployment -Name "rf-onpremise-vnet-deployment" `
+    New-AzureRmResourceGroupDeployment -Name "ds-onpremise-vnet-deployment" `
         -ResourceGroupName $onpremiseNetworkResourceGroup.ResourceGroupName -TemplateUri $virtualNetworkTemplate.AbsoluteUri `
         -TemplateParameterFile $onpremiseVirtualNetworkParametersFile
 
-	#2 rf-onpremise-ex-deployment
+	#2 ds-onpremise-ex-deployment
     Write-Host "Deploying Resource Forest Exchange servers..." -ForegroundColor Yellow
-    New-AzureRmResourceGroupDeployment -Name "rf-onpremise-ex-deployment" `
+    New-AzureRmResourceGroupDeployment -Name "ds-onpremise-ex-deployment" `
 		-ResourceGroupName $onpremiseNetworkResourceGroup.ResourceGroupName `
         -TemplateUri $virtualMachineTemplate.AbsoluteUri -TemplateParameterFile $azureEXVirtualMachinesParametersFile
 
-	#3 rf-onpremise-sp-deployment
+	#3 ds-onpremise-sp-deployment
     Write-Host "Deploying Resource Forest SharePoint servers..." -ForegroundColor Yellow
-    New-AzureRmResourceGroupDeployment -Name "rf-onpremise-sp-deployment" `
+    New-AzureRmResourceGroupDeployment -Name "ds-onpremise-sp-deployment" `
 		-ResourceGroupName $onpremiseNetworkResourceGroup.ResourceGroupName `
         -TemplateUri $virtualMachineTemplate.AbsoluteUri -TemplateParameterFile $azureSPVirtualMachinesParametersFile
 
-	#4 rf-onpremise-sfb-deployment
+	#4 ds-onpremise-sfb-deployment
     Write-Host "Deploying Resource Forest Skype servers..." -ForegroundColor Yellow
-    New-AzureRmResourceGroupDeployment -Name "rf-onpremise-sfb-deployment" `
+    New-AzureRmResourceGroupDeployment -Name "ds-onpremise-sfb-deployment" `
 		-ResourceGroupName $onpremiseNetworkResourceGroup.ResourceGroupName `
         -TemplateUri $virtualMachineTemplate.AbsoluteUri -TemplateParameterFile $azureSFBVirtualMachinesParametersFile
 
-	#5 rf-onpremise-adds-deployment
+	#5 ds-onpremise-adds-deployment
     Write-Host "Deploying Resource Forest ADDS servers..." -ForegroundColor Yellow
-    New-AzureRmResourceGroupDeployment -Name "rf-onpremise-adds-deployment" `
+    New-AzureRmResourceGroupDeployment -Name "ds-onpremise-adds-deployment" `
         -ResourceGroupName $onpremiseNetworkResourceGroup.ResourceGroupName `
         -TemplateUri $virtualMachineTemplate.AbsoluteUri -TemplateParameterFile $onpremiseADDSVirtualMachinesParametersFile
 
-	#6 rf-onpremise-dns-vnet-deployment
+	#6 ds-onpremise-dns-vnet-deployment
     # Remove the Azure DNS entry since the forest will create a DNS forwarding entry.
     Write-Host "Updating Resource Forest virtual network DNS servers..." -ForegroundColor Yellow
-    New-AzureRmResourceGroupDeployment -Name "rf-onpremise-dns-vnet-deployment" `
+    New-AzureRmResourceGroupDeployment -Name "ds-onpremise-dns-vnet-deployment" `
         -ResourceGroupName $onpremiseNetworkResourceGroup.ResourceGroupName -TemplateUri $virtualNetworkTemplate.AbsoluteUri `
         -TemplateParameterFile $onpremiseVirtualNetworkDnsParametersFile
 
-	#7 rf-onpremise-adds-forest-deployment
+	#7 ds-onpremise-adds-forest-deployment
     Write-Host "Creating Resource Forest ADDS forest..." -ForegroundColor Yellow
-    New-AzureRmResourceGroupDeployment -Name "rf-onpremise-adds-forest-deployment" `
+    New-AzureRmResourceGroupDeployment -Name "ds-onpremise-adds-forest-deployment" `
         -ResourceGroupName $onpremiseNetworkResourceGroup.ResourceGroupName `
         -TemplateUri $virtualMachineExtensionsTemplate.AbsoluteUri -TemplateParameterFile $onpremiseCreateAddsForestExtensionParametersFile
 
-	#8 rf-onpremise-adds-dc-deployment
+	#8 ds-onpremise-adds-dc-deployment
    Write-Host "Creating ADDS domain controller..." -ForegroundColor Yellow
-   New-AzureRmResourceGroupDeployment -Name "rf-onpremise-adds-dc-deployment" `
+   New-AzureRmResourceGroupDeployment -Name "ds-onpremise-adds-dc-deployment" `
         -ResourceGroupName $onpremiseNetworkResourceGroup.ResourceGroupName `
         -TemplateUri $virtualMachineExtensionsTemplate.AbsoluteUri -TemplateParameterFile $onpremiseAddAddsDomainControllerExtensionParametersFile
 
-	#9 rf-onpremise-adds-ex-deployment
+	#9 ds-onpremise-adds-ex-deployment
     Write-Host "Join Resource Forest Exchange servers to Domain......" -ForegroundColor Yellow
-    New-AzureRmResourceGroupDeployment -Name "rf-onpremise-adds-ex-deployment" `
+    New-AzureRmResourceGroupDeployment -Name "ds-onpremise-adds-ex-deployment" `
         -ResourceGroupName $onpremiseNetworkResourceGroup.ResourceGroupName `
         -TemplateUri $virtualMachineExtensionsTemplate.AbsoluteUri -TemplateParameterFile $onpremiseEXJoinDomainExtensionParametersFile
 
-	#10 rf-onpremise-adds-sp-deployment
+	#10 ds-onpremise-adds-sp-deployment
     Write-Host "Join Resource Forest SharePoint servers to Domain......" -ForegroundColor Yellow
-    New-AzureRmResourceGroupDeployment -Name "rf-onpremise-adds-sp-deployment" `
+    New-AzureRmResourceGroupDeployment -Name "ds-onpremise-adds-sp-deployment" `
         -ResourceGroupName $onpremiseNetworkResourceGroup.ResourceGroupName `
         -TemplateUri $virtualMachineExtensionsTemplate.AbsoluteUri -TemplateParameterFile $onpremiseSPJoinDomainExtensionParametersFile
 
-	#11 rf-onpremise-adds-sfb-deployment
+	#11 ds-onpremise-adds-sfb-deployment
     Write-Host "Join Resource Forest Skype servers to Domain......" -ForegroundColor Yellow
-    New-AzureRmResourceGroupDeployment -Name "rf-onpremise-adds-sfb-deployment" `
+    New-AzureRmResourceGroupDeployment -Name "ds-onpremise-adds-sfb-deployment" `
         -ResourceGroupName $onpremiseNetworkResourceGroup.ResourceGroupName `
         -TemplateUri $virtualMachineExtensionsTemplate.AbsoluteUri -TemplateParameterFile $onpremiseSFBJoinDomainExtensionParametersFile
 }

@@ -16,7 +16,7 @@ Configuration CreateForest {
     #v1.4
     (
         [Parameter(Mandatory=$True)]
-        [string]$AdminUser = "rf-admin",
+        [string]$AdminUser = "ds-admin",
         
         [Parameter(Mandatory=$True)]
         [string]$AdminPassword = "P@ssW0rd1234!",
@@ -25,13 +25,13 @@ Configuration CreateForest {
         [string]$SafeModePassword = "P@ssW0rd1234!",
         
         [Parameter(Mandatory)]
-        [string]$DomainName = "rf.com",
+        [string]$DomainName = "dmscon.com",
 
         [Parameter(Mandatory)]
-        [string]$DomainNetbiosName = "rf",
+        [string]$DomainNetbiosName = "dmscon",
 
         [Parameter(Mandatory)]
-        [string]$TargetDomainName = "af.com",
+        [string]$TargetDomainName = "jdscon.com",
         
         [Parameter(Mandatory)]
         [string]$ForwardIpAddress = "193.100.0.4",
@@ -162,7 +162,7 @@ Configuration CreateForest {
             }
         }
 
-        <#
+        <
         xADDomainTrust SetOutboundDomainTrust {
             Ensure = 'Present'
             SourceDomainName = $DomainName
@@ -173,7 +173,7 @@ Configuration CreateForest {
             PsDscRunAsCredential = $AdminCreds
             DependsOn = "[xADDomainController]PrimaryDC"
         }
-        #>
+        >
         
         # xADDomainTrust SetInboundDomainTrust {
         #     Ensure = 'Present'
