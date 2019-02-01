@@ -77,40 +77,52 @@ if ($Mode -eq "onpremise") {
 		-ResourceGroupName $onpremiseNetworkResourceGroup.ResourceGroupName `
         -TemplateUri $virtualMachineTemplate.AbsoluteUri -TemplateParameterFile $azurePingVirtualMachinesParametersFile
 
-	#4 js-onpremise-adds-deployment
+	#4 js-onpremise-wks-deployment
+    Write-Host "Deploying Account Forest workstations..." -ForegroundColor Yellow
+    New-AzureRmResourceGroupDeployment -Name "js-onpremise-wks-deployment" `
+		-ResourceGroupName $onpremiseNetworkResourceGroup.ResourceGroupName `
+        -TemplateUri $virtualMachineTemplate.AbsoluteUri -TemplateParameterFile $azurePingVirtualMachinesParametersFile
+
+	#5 js-onpremise-adds-deployment
     Write-Host "Deploying Account Forest ADDS servers..." -ForegroundColor Yellow
     New-AzureRmResourceGroupDeployment -Name "js-onpremise-adds-deployment" `
         -ResourceGroupName $onpremiseNetworkResourceGroup.ResourceGroupName `
         -TemplateUri $virtualMachineTemplate.AbsoluteUri -TemplateParameterFile $onpremiseADDSVirtualMachinesParametersFile
 
-	#5 js-onpremise-dns-vnet-deployment
+	#6 js-onpremise-dns-vnet-deployment
     # Remove the Azure DNS entry since the forest will create a DNS forwarding entry.
     Write-Host "Updating Account Forest virtual network DNS servers..." -ForegroundColor Yellow
     New-AzureRmResourceGroupDeployment -Name "js-onpremise-dns-vnet-deployment" `
         -ResourceGroupName $onpremiseNetworkResourceGroup.ResourceGroupName -TemplateUri $virtualNetworkTemplate.AbsoluteUri `
         -TemplateParameterFile $onpremiseVirtualNetworkDnsParametersFile
 
-	#6 js-onpremise-adds-forest-deployment
+	#7 js-onpremise-adds-forest-deployment
     Write-Host "Creating Account Forest ADDS forest..." -ForegroundColor Yellow
     New-AzureRmResourceGroupDeployment -Name "js-onpremise-adds-forest-deployment" `
         -ResourceGroupName $onpremiseNetworkResourceGroup.ResourceGroupName `
         -TemplateUri $virtualMachineExtensionsTemplate.AbsoluteUri -TemplateParameterFile $onpremiseCreateAddsForestExtensionParametersFile
 
-	#7 js-onpremise-adds-dc-deployment
+	#8 js-onpremise-adds-dc-deployment
      Write-Host "Creating Account Forest ADDS domain controller..." -ForegroundColor Yellow
     New-AzureRmResourceGroupDeployment -Name "js-onpremise-adds-dc-deployment" `
         -ResourceGroupName $onpremiseNetworkResourceGroup.ResourceGroupName `
         -TemplateUri $virtualMachineExtensionsTemplate.AbsoluteUri -TemplateParameterFile $onpremiseAddAddsDomainControllerExtensionParametersFile
 
-	#8 js-onpremise-adds-adc-deployment
+	#9 js-onpremise-adds-adc-deployment
     Write-Host "Join Account Forest AD Connect servers to Domain......" -ForegroundColor Yellow
     New-AzureRmResourceGroupDeployment -Name "js-onpremise-adds-adc-deployment" `
         -ResourceGroupName $onpremiseNetworkResourceGroup.ResourceGroupName `
         -TemplateUri $virtualMachineExtensionsTemplate.AbsoluteUri -TemplateParameterFile $onpremisADCJoinDomainExtensionParametersFile
 
-	#9 js-onpremise-ping-deployment
+	#10 js-onpremise-ping-deployment
     Write-Host "Join Account Forest Ping servers to Domain......" -ForegroundColor Yellow
     New-AzureRmResourceGroupDeployment -Name "js-onpremise-adds-ping-deployment" `
+        -ResourceGroupName $onpremiseNetworkResourceGroup.ResourceGroupName `
+        -TemplateUri $virtualMachineExtensionsTemplate.AbsoluteUri -TemplateParameterFile $onpremisPingJoinDomainExtensionParametersFile
+
+	#11 js-onpremise-wks-deployment
+    Write-Host "Join Account Forest workstations to Domain......" -ForegroundColor Yellow
+    New-AzureRmResourceGroupDeployment -Name "js-onpremise-adds-wks-deployment" `
         -ResourceGroupName $onpremiseNetworkResourceGroup.ResourceGroupName `
         -TemplateUri $virtualMachineExtensionsTemplate.AbsoluteUri -TemplateParameterFile $onpremisPingJoinDomainExtensionParametersFile
 }
