@@ -81,7 +81,7 @@ if ($Mode -eq "onpremise") {
     Write-Host "Deploying Account Forest workstations..." -ForegroundColor Yellow
     New-AzureRmResourceGroupDeployment -Name "js-onpremise-wks-deployment" `
 		-ResourceGroupName $onpremiseNetworkResourceGroup.ResourceGroupName `
-        -TemplateUri $virtualMachineTemplate.AbsoluteUri -TemplateParameterFile $azurePingVirtualMachinesParametersFile
+        -TemplateUri $virtualMachineTemplate.AbsoluteUri -TemplateParameterFile $azureWKSVirtualMachinesParametersFile
 
 	#5 js-onpremise-adds-deployment
     Write-Host "Deploying Account Forest ADDS servers..." -ForegroundColor Yellow
